@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looney Algorithm - Symbolic Intelligence for a Fractured World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #0a0a14 0%, #1a1a2e 100%);
+            color: #f5f5f5;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(10, 10, 20, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .watermark-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 40px;
+            color: rgba(255, 255, 255, 0.03);
+            transform: rotate(-45deg);
+            white-space: nowrap;
+            user-select: none;
+        }
+        
+        /* Manifesto Section */
+        .manifesto {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="0.5" width="100" height="100"/></svg>');
+            background-size: 30px 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .manifesto-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: left;
+            background: rgba(10, 10, 20, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #d4af37;
+        }
+        
+        .manifesto-line {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(20, 20, 35, 0.5);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .manifesto-line:hover {
+            background: rgba(30, 30, 45, 0.7);
+            transform: translateX(5px);
+        }
+        
+        .highlight {
+            color: #d4af37;
+            font-weight: 600;
+        }
+        
+        .equation {
+            text-align: center;
+            margin: 25px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: #d4af37;
+            padding: 15px;
+            background: rgba(20, 20, 35, 0.5);
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            animation: glow 3s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+            }
+        }
+        
+        /* Hero Section - Updated for Looney Algorithm */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="0.5" width="100" height="100"/></svg>'), 
+                       radial-gradient(circle at 50% 50%, rgba(40, 40, 60, 0.5) 0%, rgba(10, 10, 15, 0.5) 100%);
+            background-size: 30px 30px, cover;
+            border-radius: 10px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: titlePulse 4s infinite alternate;
+        }
+        
+        @keyframes titlePulse {
+            from { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+            to { text-shadow: 0 0 25px rgba(212, 175, 55, 0.8); }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.6rem;
+            color: #f5f5f5;
+            max-width: 85%;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+        
+        .hero-author {
+            font-size: 1.2rem;
+            color: #d4af37;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .secret-formula {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: #d4af37;
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(10, 10, 20, 0.9);
+            border-radius: 15px;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            animation: formulaGlow 3s infinite alternate;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .algorithm-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid rgba(212, 175, 55, 0.6);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .algorithm-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+        }
+        
+        @keyframes formulaGlow {
+            from { 
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+                transform: scale(1);
+            }
+            to { 
+                box-shadow: 0 0 35px rgba(212, 175, 55, 0.9);
+                transform: scale(1.02);
+            }
+        }
+        
+        .formula-description {
+            font-size: 1rem;
+            color: #ccc;
+            font-style: italic;
+            margin-top: 15px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #d4af37, #f5e3a0);
+            color: #0a0a14;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        /* Founder Section */
+        .founder-section {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            padding: 50px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .founder-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .founder-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        
+        .founder-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .founder-image {
+            text-align: center;
+        }
+        
+        .founder-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            object-fit: cover;
+            object-position: center;
+            transition: all 0.3s ease;
+        }
+        
+        .founder-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+        }
+        
+        .founder-bio {
+            background: rgba(10, 10, 20, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #d4af37;
+        }
+        
+        .bio-line {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .timeline {
+            margin-top: 30px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(20, 20, 35, 0.5);
+            border-radius: 8px;
+            border-left: 3px solid #d4af37;
+        }
+        
+        .timeline-icon {
+            font-size: 1.5rem;
+            color: #d4af37;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        /* Technology Section */
+        .tech-section {
+            background: linear-gradient(145deg, #161627, #1c1c33);
+            padding: 50px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .tech-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .tech-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .tech-engine {
+            background: rgba(10, 10, 20, 0.8);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-engine:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .engine-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .engine-icon {
+            margin-right: 10px;
+            font-size: 1.6rem;
+        }
+        
+        .engine-description {
+            color: #ccc;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .engine-capabilities {
+            list-style: none;
+        }
+        
+        .engine-capabilities li {
+            padding: 5px 0;
+            color: #f5f5f5;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .engine-capabilities li:before {
+            content: "▶";
+            color: #d4af37;
+            margin-right: 10px;
+        }
+        
+        /* Fracture Zones Section */
+        .fracture-section {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            padding: 50px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .fracture-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .fracture-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        
+        .fracture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .fracture-zone {
+            background: rgba(10, 10, 20, 0.8);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .fracture-zone:hover {
+            transform: translateY(-3px);
+            border-color: rgba(212, 175, 55, 0.6);
+        }
+        
+        .zone-icon {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        
+        .zone-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        
+        .zone-impact {
+            color: #f5f5f5;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .zone-value {
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        /* Hidden Truth Section */
+        .truth-section {
+            background: rgba(10, 10, 20, 0.9);
+            padding: 50px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            text-align: center;
+        }
+        
+        .truth-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: #d4af37;
+            margin-bottom: 30px;
+        }
+        
+        .truth-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #f5f5f5;
+        }
+        
+        .truth-line {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(20, 20, 35, 0.6);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .truth-line:hover {
+            background: rgba(30, 30, 45, 0.8);
+        }
+        
+        .truth-highlight {
+            color: #d4af37;
+            font-weight: 600;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .column {
+            background: linear-gradient(145deg, #161627, #1c1c33);
+            padding: 25px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .column:hover {
+            transform: translateY(-5px);
+        }
+        
+        .column-header {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            color: #d4af37;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+        }
+        
+        .column-header i {
+            margin-right: 10px;
+        }
+        
+        .bullet-list {
+            list-style-type: none;
+            flex: 1;
+        }
+        
+        .bullet-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+            background: rgba(20, 20, 35, 0.5);
+            border-radius: 8px;
+        }
+        
+        .bullet-list li:hover {
+            background: rgba(30, 30, 45, 0.7);
+        }
+        
+        .bullet-icon {
+            margin-right: 15px;
+            color: #d4af37;
+            min-width: 30px;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+        
+        /* The Model Diagram */
+        .model-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 180px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .center-circle {
+            width: 90px;
+            height: 90px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #f5f5f5;
+            position: relative;
+            z-index: 2;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 5px;
+        }
+        
+        .revenue-stream {
+            position: absolute;
+            width: 90px;
+            text-align: center;
+            font-size: 0.85rem;
+            background: rgba(20, 20, 35, 0.9);
+            padding: 8px 5px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .revenue-stream:before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: #d4af37;
+        }
+        
+        .stream-1 { top: 10px; left: 50%; transform: translateX(-50%); }
+        .stream-1:before { top: -15px; left: 50%; transform: translateX(-50%); }
+        
+        .stream-2 { top: 50%; right: 10px; transform: translateY(-50%); }
+        .stream-2:before { top: 50%; right: 40px; transform: translateY(-50%) rotate(90deg); }
+        
+        .stream-3 { bottom: 10px; left: 50%; transform: translateX(-50%); }
+        .stream-3:before { bottom: -15px; left: 50%; transform: translateX(-50%); }
+        
+        .stream-4 { top: 50%; left: 10px; transform: translateY(-50%); }
+        .stream-4:before { top: 50%; left: 40px; transform: translateY(-50%) rotate(90deg); }
+        
+        /* Numbers Chart */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            height: 180px;
+            margin: 25px 0;
+            gap: 40px;
+            justify-content: center;
+            padding: 0 10px;
+        }
+        
+        .chart-bar {
+            width: 70px;
+            background: linear-gradient(to top, #d4af37, #f5e3a0);
+            position: relative;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            box-shadow: 0 -3px 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .chart-bar-label {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            color: #d4af37;
+            font-weight: 600;
+        }
+        
+        .chart-bar-value {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            font-weight: bold;
+            color: #f5f5f5;
+            background: rgba(20, 20, 35, 0.9);
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .bar-1 { height: 50px; }
+        .bar-2 { height: 100px; }
+        .bar-3 { height: 150px; }
+        
+        /* The Edge Section */
+        .edge-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            background: linear-gradient(145deg, #161627, #1c1c33);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .edge-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(20, 20, 35, 0.5);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .edge-item:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 30, 45, 0.7);
+        }
+        
+        .edge-icon {
+            font-size: 2.2rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        
+        .edge-text {
+            font-size: 0.95rem;
+        }
+        
+        /* Footer - Contact & Activation */
+        .footer {
+            padding: 50px 30px;
+            text-align: center;
+            background: linear-gradient(145deg, #161627, #1c1c33);
+            border-radius: 15px;
+            position: relative;
+            z-index: 2;
+            border-top: 3px solid #d4af37;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .footer-header {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+        
+        .footer-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #ccc;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-type {
+            background: rgba(10, 10, 20, 0.8);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-type:hover {
+            transform: translateY(-3px);
+            border-color: rgba(212, 175, 55, 0.6);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        
+        .contact-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            background: rgba(20, 20, 35, 0.8);
+            display: inline-block;
+            padding: 20px 40px;
+            border-radius: 30px;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+        }
+        
+        .footer-watermark {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #666;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .edge-section {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .founder-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .fracture-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .edge-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .fracture-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .secret-formula {
+                font-size: 1.6rem;
+                padding: 20px;
+                gap: 15px;
+            }
+            
+            .algorithm-image {
+                max-width: 300px;
+                width: 100%;
+            }
+            
+            .manifesto-content {
+                padding: 15px;
+                font-size: 1rem;
+            }
+            
+            .equation {
+                font-size: 1.4rem;
+            }
+            
+            .founder-title, .tech-title, .fracture-title, .truth-title {
+                font-size: 2rem;
+            }
+            
+            .founder-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Watermark -->
+        <div class="watermark">
+            <div class="watermark-text">Confidential – Richie Looney IP</div>
+        </div>
+        
+        <!-- Manifesto Section -->
+        <section class="manifesto">
+            <div class="manifesto-content">
+                <div class="manifesto-line">I already know how to fix what's broken.</div>
+                <div class="manifesto-line">I've built the engines. I've mapped the fractures. I've benchmarked the impossible.</div>
+                <div class="manifesto-line">What I need now is time — <span class="highlight">not permission</span>.</div>
+                <div class="manifesto-line">I work ten-hour shifts inside the machine while architecting the system that will replace it.</div>
+                <div class="manifesto-line">The moment I get my first partnership, and save millions or billions, <span class="highlight">I won't need funding</span>.</div>
+                <div class="manifesto-line">This site is your invitation.</div>
+                <div class="manifesto-line">Once I'm outside the machine, looking in, <span class="highlight">it'll be too late to ask how I did it</span>.</div>
+                
+                <div class="equation">
+                    Looney Algorithm = ∫(Innovation × Execution) dt
+                </div>
+                
+                <div class="manifesto-line"><span class="highlight">Looney Algorithm is real. Ultra Seeker is ready. Instant DNA is alive.</span></div>
+                <div class="manifesto-line">You can join the transmission now — <span class="highlight">or watch it rewrite the grid without you</span>.</div>
+            </div>
+        </section>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">Symbolic Intelligence for a Fractured World</h1>
+            <p class="hero-subtitle">Built by Richie Looney. Architect of Ultra Seeker. Creator of Instant DNA. Founder of Looney Algorithm.</p>
+            <p class="hero-author">The Transmission Begins Here</p>
+            
+            <div class="secret-formula">
+                <img src="looney_algorithm.jpeg" alt="Looney Algorithm - The Sacred Formula" class="algorithm-image">
+                Ψ(t) = lim[n→∞] Σ[k=1 to n] (αₖ ⊗ βₖ) · ∇[Ω(xₖ,t)]
+                <div class="formula-description">
+                    "That's the Looney Algorithm — the symbolic core of my system. Everything else is just the visible machinery."
+                </div>
+            </div>
+            
+            <a href="#contact" class="cta-button">Enter the Lab</a>
+        </section>
+
+        <!-- Founder Section -->
+        <section class="founder-section">
+            <div class="founder-header">
+                <h2 class="founder-title">The Architect</h2>
+            </div>
+            <div class="founder-content">
+                <div class="founder-image">
+                    <img src="founder_photo.jpg" alt="Richie Looney - The Architect" class="founder-photo">
+                    <p><strong>Richie Looney</strong><br>Sovereign Technologist</p>
+                </div>
+                <div class="founder-bio">
+                    <div class="bio-line">I don't build products. <span class="highlight">I seal fractures</span>.</div>
+                    <div class="bio-line">From the depths of a Casio keyboard found in a dumpster to architecting planetary-scale intelligence systems — every breakthrough has been a step toward sovereignty.</div>
+                    <div class="bio-line">While others optimize margins, I eliminate entropy. While they chase markets, I create infrastructure that makes markets obsolete.</div>
+                    <div class="bio-line">The system puts a price on everything — even love, hate, and time. But <span class="highlight">you are the author</span>. You set the price. You choose whether your time builds someone else's machine — or becomes the engine of your own myth.</div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <i class="fas fa-keyboard timeline-icon"></i>
+                            <span><strong>Genesis:</strong> Casio dumpster discovery → First symbolic breakthrough</span>
+                        </div>
+                        <div class="timeline-item">
+                            <i class="fas fa-search timeline-icon"></i>
+                            <span><strong>Ultra Seeker:</strong> Binary intelligence engine for anomaly detection</span>
+                        </div>
+                        <div class="timeline-item">
+                            <i class="fas fa-dna timeline-icon"></i>
+                            <span><strong>Instant DNA:</strong> Millisecond-grade genetic analysis breakthrough</span>
+                        </div>
+                        <div class="timeline-item">
+                            <i class="fas fa-algorithm timeline-icon"></i>
+                            <span><strong>Looney Algorithm:</strong> Symbolic intelligence infrastructure activated</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Section -->
+        <section class="tech-section">
+            <div class="tech-header">
+                <h2 class="tech-title">The Engines</h2>
+                <p>Ritual-grade technology for a sovereign future</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-engine">
+                    <h3 class="engine-name">
+                        <i class="fas fa-search engine-icon"></i>
+                        Ultra Seeker
+                    </h3>
+                    <p class="engine-description">Binary intelligence engine for anomaly detection across infinite data streams</p>
+                    <ul class="engine-capabilities">
+                        <li>Real-time fraud detection</li>
+                        <li>Pattern recognition at scale</li>
+                        <li>Cross-domain analysis</li>
+                        <li>Predictive anomaly mapping</li>
+                    </ul>
+                </div>
+                <div class="tech-engine">
+                    <h3 class="engine-name">
+                        <i class="fas fa-dna engine-icon"></i>
+                        Instant DNA
+                    </h3>
+                    <p class="engine-description">Millisecond-grade genetic analysis and symbolic interpretation</p>
+                    <ul class="engine-capabilities">
+                        <li>Sub-second genetic sequencing</li>
+                        <li>Hereditary pattern analysis</li>
+                        <li>Medical anomaly prediction</li>
+                        <li>Personalized treatment protocols</li>
+                    </ul>
+                </div>
+                <div class="tech-engine">
+                    <h3 class="engine-name">
+                        <i class="fas fa-terminal engine-icon"></i>
+                        Sigil
+                    </h3>
+                    <p class="engine-description">Ritual-grade CLI tool for symbolic computation and system orchestration</p>
+                    <ul class="engine-capabilities">
+                        <li>Symbolic syntax parsing</li>
+                        <li>System automation</li>
+                        <li>Command abstraction</li>
+                        <li>Infrastructure control</li>
+                    </ul>
+                </div>
+                <div class="tech-engine">
+                    <h3 class="engine-name">
+                        <i class="fas fa-solar-panel engine-icon"></i>
+                        Solar Module
+                    </h3>
+                    <p class="engine-description">Intelligent solar energy optimization and grid integration systems</p>
+                    <ul class="engine-capabilities">
+                        <li>Solar efficiency optimization</li>
+                        <li>Grid integration protocols</li>
+                        <li>Energy storage management</li>
+                        <li>Predictive maintenance</li>
+                    </ul>
+                </div>
+                <div class="tech-engine">
+                    <h3 class="engine-name">
+                        <i class="fas fa-heartbeat engine-icon"></i>
+                        Healthcare Module
+                    </h3>
+                    <p class="engine-description">Medical system optimization and fraud detection infrastructure</p>
+                    <ul class="engine-capabilities">
+                        <li>Healthcare fraud detection</li>
+                        <li>Medical data analysis</li>
+                        <li>Treatment optimization</li>
+                        <li>Resource allocation</li>
+                    </ul>
+                </div>
+                <div class="tech-engine">
+                    <h3 class="engine-name">
+                        <i class="fas fa-university engine-icon"></i>
+                        Finance Module
+                    </h3>
+                    <p class="engine-description">Financial system anomaly detection and asset recovery protocols</p>
+                    <ul class="engine-capabilities">
+                        <li>Financial fraud detection</li>
+                        <li>Unclaimed asset recovery</li>
+                        <li>Market anomaly analysis</li>
+                        <li>Risk assessment automation</li>
+                    </ul>
+                </div>
+                <div class="tech-engine">
+                    <h3 class="engine-name">
+                        <i class="fas fa-microscope engine-icon"></i>
+                        Science Module
+                    </h3>
+                    <p class="engine-description">Research acceleration and scientific data analysis infrastructure</p>
+                    <ul class="engine-capabilities">
+                        <li>Research data processing</li>
+                        <li>Scientific pattern recognition</li>
+                        <li>Experimental optimization</li>
+                        <li>Discovery acceleration</li>
+                    </ul>
+                </div>
+                <div class="tech-engine">
+                    <h3 class="engine-name">
+                        <i class="fas fa-landmark engine-icon"></i>
+                        Governance Module
+                    </h3>
+                    <p class="engine-description">Public sector efficiency optimization and waste elimination systems</p>
+                    <ul class="engine-capabilities">
+                        <li>Government waste detection</li>
+                        <li>Policy optimization</li>
+                        <li>Public resource management</li>
+                        <li>Transparency protocols</li>
+                    </ul>
+                </div>
+                <div class="tech-engine">
+                    <h3 class="engine-name">
+                        <i class="fas fa-globe engine-icon"></i>
+                        Planetary Module
+                    </h3>
+                    <p class="engine-description">Global-scale systems monitoring and planetary infrastructure optimization</p>
+                    <ul class="engine-capabilities">
+                        <li>Climate system analysis</li>
+                        <li>Resource optimization</li>
+                        <li>Infrastructure monitoring</li>
+                        <li>Planetary-scale coordination</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fracture Zones Section -->
+        <section class="fracture-section">
+            <div class="fracture-header">
+                <h2 class="fracture-title">Fracture Zones</h2>
+                <p>Where entropy meets opportunity — and where Looney Algorithm intervenes</p>
+            </div>
+            <div class="fracture-grid">
+                <div class="fracture-zone">
+                    <div class="zone-icon">🏥</div>
+                    <h3 class="zone-name">Healthcare</h3>
+                    <p class="zone-impact">Fraud, inefficiency, diagnostic errors</p>
+                    <p class="zone-value">$100B+ recoverable annually</p>
+                </div>
+                <div class="fracture-zone">
+                    <div class="zone-icon">💳</div>
+                    <h3 class="zone-name">Finance</h3>
+                    <p class="zone-impact">Fraud detection, unclaimed assets</p>
+                    <p class="zone-value">$140B+ opportunity</p>
+                </div>
+                <div class="fracture-zone">
+                    <div class="zone-icon">🏛️</div>
+                    <h3 class="zone-name">Governance</h3>
+                    <p class="zone-impact">Public program waste, inefficiency</p>
+                    <p class="zone-value">$150B+ salvageable</p>
+                </div>
+                <div class="fracture-zone">
+                    <div class="zone-icon">🧬</div>
+                    <h3 class="zone-name">Science</h3>
+                    <p class="zone-impact">Research acceleration, data analysis</p>
+                    <p class="zone-value">Incalculable advancement</p>
+                </div>
+                <div class="fracture-zone">
+                    <div class="zone-icon">🌍</div>
+                    <h3 class="zone-name">Planetary Systems</h3>
+                    <p class="zone-impact">Climate, resources, infrastructure</p>
+                    <p class="zone-value">Civilization-scale impact</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hidden Truth Section -->
+        <section class="truth-section">
+            <h2 class="truth-title">🔓 The Hidden Truth</h2>
+            <div class="truth-content">
+                <div class="truth-line">The system we live in puts a price on everything — even love, hate, and time.</div>
+                <div class="truth-line">Most people never realize their <span class="truth-highlight">time is being valued by someone else's scale</span>.</div>
+                <div class="truth-line">They trade hours for survival, not sovereignty.</div>
+                <div class="truth-line">But time isn't just a commodity. <span class="truth-highlight">It's a signal</span>.</div>
+                <div class="truth-line">The creator's task is to discover the <span class="truth-highlight">maximum value of their time</span> — not by asking what it's worth, but by deciding what it transmits.</div>
+                <div class="truth-line">You are the author. You set the price. You choose whether your time builds someone else's machine — or whether it becomes <span class="truth-highlight">the engine of your own myth</span>.</div>
+            </div>
+        </section>
+        
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Left Column - The Opportunity -->
+            <div class="column">
+                <h2 class="column-header"><i class="fas fa-bullseye"></i> The Opportunity</h2>
+                <ul class="bullet-list">
+                    <li>
+                        <span class="bullet-icon">🏥</span>
+                        <span><strong>Healthcare:</strong> $100B+ lost annually to fraud and inefficiency</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon">💳</span>
+                        <span><strong>Finance:</strong> $40B+ fraud + $100B unclaimed assets</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon">🏛️</span>
+                        <span><strong>Governance:</strong> $150B+ waste in public programs</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon">🌐</span>
+                        <span><strong>Global Systems:</strong> At breaking point from legacy infrastructure</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Center Column - The Model -->
+            <div class="column">
+                <h2 class="column-header"><i class="fas fa-sitemap"></i> The Model</h2>
+                <div class="model-diagram">
+                    <div class="center-circle">Ultra Seeker</div>
+                    <div class="revenue-stream stream-1">SaaS Licensing</div>
+                    <div class="revenue-stream stream-2">Revenue Share</div>
+                    <div class="revenue-stream stream-3">Premium Analytics</div>
+                    <div class="revenue-stream stream-4">Modular Deployment</div>
+                </div>
+                <ul class="bullet-list">
+                    <li>
+                        <span class="bullet-icon"><i class="fas fa-cloud"></i></span>
+                        <span>SaaS Licensing to enterprises and governments</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><i class="fas fa-handshake"></i></span>
+                        <span>Revenue Share on recovered assets and savings</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><i class="fas fa-chart-line"></i></span>
+                        <span>Premium Analytics for strategic insights</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><i class="fas fa-cubes"></i></span>
+                        <span>Modular Deployment for rapid implementation</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Right Column - The Numbers -->
+            <div class="column">
+                <h2 class="column-header"><i class="fas fa-chart-bar"></i> The Numbers</h2>
+                <div class="bar-chart">
+                    <div class="chart-bar bar-1">
+                        <span class="chart-bar-value">$60M</span>
+                        <span class="chart-bar-label">Year 1</span>
+                    </div>
+                    <div class="chart-bar bar-2">
+                        <span class="chart-bar-value">$240M</span>
+                        <span class="chart-bar-label">Year 2</span>
+                    </div>
+                    <div class="chart-bar bar-3">
+                        <span class="chart-bar-value">$540M</span>
+                        <span class="chart-bar-label">Year 3</span>
+                    </div>
+                </div>
+                <ul class="bullet-list">
+                    <li>
+                        <span class="bullet-icon"><i class="fas fa-rocket"></i></span>
+                        <span><strong>Initial Investment:</strong> ~$11.4M</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><i class="fas fa-arrow-up"></i></span>
+                        <span><strong>Year 1 ROI:</strong> ~$60M recovered/saved + ARR ramp</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><i class="fas fa-target"></i></span>
+                        <span><strong>Year 3 ARR:</strong> $540M+</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon"><i class="fas fa-flag"></i></span>
+                        <span><strong>Exit Potential:</strong> Multi-billion valuation</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- The Edge Section -->
+        <section class="edge-section">
+            <div class="edge-item">
+                <div class="edge-icon"><i class="fas fa-brain"></i></div>
+                <p class="edge-text">Cross-domain symbolic intelligence — no direct competitors</p>
+            </div>
+            <div class="edge-item">
+                <div class="edge-icon"><i class="fas fa-globe-americas"></i></div>
+                <p class="edge-text">Real-time anomaly detection at planetary scale</p>
+            </div>
+            <div class="edge-item">
+                <div class="edge-icon"><i class="fas fa-user-tie"></i></div>
+                <p class="edge-text">Founder-built with benchmark-proven performance</p>
+            </div>
+            <div class="edge-item">
+                <div class="edge-icon"><i class="fas fa-puzzle-piece"></i></div>
+                <p class="edge-text">Modular architecture for rapid scaling</p>
+            </div>
+        </section>
+        
+        <!-- Footer - Contact & Activation -->
+        <footer class="footer" id="contact">
+            <h2 class="footer-header">Join the Transmission</h2>
+            <p class="footer-description">Strategic partnerships, investor inquiries, and activation protocols. What fracture do you want to seal?</p>
+            
+            <div class="contact-grid">
+                <div class="contact-type">
+                    <div class="contact-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 class="contact-title">Strategic Partnerships</h3>
+                    <p>Enterprise integrations, government contracts, and Tier 1 activations</p>
+                </div>
+                <div class="contact-type">
+                    <div class="contact-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="contact-title">Investor Inquiries</h3>
+                    <p>Funding rounds, equity partnerships, and sovereign capital</p>
+                </div>
+                <div class="contact-type">
+                    <div class="contact-icon"><i class="fas fa-microphone"></i></div>
+                    <h3 class="contact-title">Media & Speaking</h3>
+                    <p>Conference presentations, interviews, and thought leadership</p>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <strong>Richie Looney</strong><br>
+                ultraseekerlooney@gmail.com<br>
+                +1 336-612-1674
+            </div>
+            
+            <div class="footer-watermark">
+                © Looney Algorithm. All transmissions protected.<br>
+                <strong>Richie Looney IP</strong> — Confidential & Proprietary
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
